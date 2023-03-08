@@ -5,7 +5,7 @@ github repo: https://github.com/Ohjurot/ConanPremakeTutorial
 To tell conan what to do. Fill up the dependency list i.e. the requirement.  
 Go to https://conan.io/center/, search the library you need. Copy the library name at upleft in form of `LIBRARY/VERSION`
 
-```txt
+```
 [requires]
 xxhash/0.8.1
 ```
@@ -16,7 +16,7 @@ Conan will be resposible for:
 ### Invoke a generator for `pre-make`
 By default: a text generator, generates text file that's telling where all the files are, where all the includes are.
 
-```txt
+```
 [requires]
 xxhash/0.8.1
 
