@@ -6,6 +6,7 @@ xxhash:shared=True
 
 [imports]
 bin, *.dll -> ./app
+bin, *.so -> ./app
 
 [generators]
 premake
