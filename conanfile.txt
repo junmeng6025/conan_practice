@@ -1,6 +1,11 @@
-# public net
 [requires]
 xxhash/0.8.1
+
+[options]
+xxhash:shared=True
+
+[imports]
+bin, *.dll -> ./app
 
 [generators]
 premake
