@@ -25,7 +25,13 @@ At a high level, the servers are just storing packages. They do not build nor cr
 
 ***
 ## Get start!
-now we write a simple app that converts a string into hash.
+now we write a simple app that converts a string into hash. e.g.
+```
+>>>input
+Hello World!
+<<<output
+0a75a91375b27d44
+```
 
 ## 1. Create a `conanfile.txt`
 To tell conan what to do. Fill up the dependency list i.e. the requirement.  
@@ -225,7 +231,7 @@ When shared set as "True", there commes issue. So we need to tell conan that we 
 xxhash/0.8.1
 
 [options]
-xxhash:shared=True  # or False
+xxhash:shared=True
 
 [imports]
 bin, *.dll -> ./app
