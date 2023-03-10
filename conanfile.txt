@@ -1,0 +1,6 @@
+# public net
+[requires]
+xxhash/0.8.1
+
+[generators]
+premake
