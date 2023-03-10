@@ -3,3 +3,15 @@ conan.lock
 conanbuildinfo**
 conaninfo.txt
 graph_info.json
+conan_imports_manifest.txt
+
+
+# Exclude vs stuff
+*.sln
+*.vcxproj
+*.vcxproj.user
+.vs
+
+# Exclude binaries
+bin
+app/*.dll
