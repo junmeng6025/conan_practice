@@ -1,6 +1,32 @@
 # Get start with Conan
 Followed the YouTube tutorial of [@Lötwig Fusel](https://www.youtube.com/watch?v=T6RZ5On3xz8)  
 github repo: https://github.com/Ohjurot/ConanPremakeTutorial
+## 0. What does conan do?
+[What is conan](https://docs.conan.io/2/introduction.html)  
+**conan** is responsible for downloading, building and deploying all the libraries to our system and to output a file that basically tells our system the paths to binaries to the includes.  
+
+**A Decentralized package manager**
+<div align=center>
+    <img src="figs/conan-systems.png" width=600>
+</div>
+
+<details>
+Conan is a decentralized package manager with a client-server architecture. This means that clients can fetch packages from, as well as upload packages to, different servers (“remotes”), similar to the “git” push-pull model to/from git remotes.  
+<br>  
+
+At a high level, the servers are just storing packages. They do not build nor create the packages. The packages are created by the client, and if binaries are built from sources, that compilation is also done by the client application.
+
+- `The Conan client`: this is a console/terminal command-line application, containing the heavy logic for package creation and consumption. Conan client has a local cache for package storage, and so it allows you to fully create and test packages offline. You can also work offline as long as no new packages are needed from remote servers.
+- `JFrog Artifactory Community Edition (CE)` is the recommended Conan server to host your own packages privately under your control. It is a free community edition of JFrog Artifactory for Conan packages, including a WebUI, multiple auth protocols (LDAP), Virtual and Remote repositories to create advanced topologies, a Rest API, and generic repositories to host any artifact.
+- `The conan_server` is a small server distributed together with the Conan client. It is a simple open-source implementation and provides basic functionality, but no WebUI or other advanced features.
+- `ConanCenter` is a central public repository where the community contributes packages for popular open-source libraries like Boost, Zlib, OpenSSL, Poco, etc.
+
+</details>
+
+***
+## Get start!
+now we write a simple app that converts a string into hash.
+
 ## 1. Create a `conanfile.txt`
 To tell conan what to do. Fill up the dependency list i.e. the requirement.  
 Go to https://conan.io/center/, search the library you need. Copy the library name at upleft in form of `LIBRARY/VERSION`
@@ -153,7 +179,7 @@ int main()
     std::cout << "The Hash is: " << std::hex << std::setw(16) << std::setfill('0') << stringHash;
 }
 ```
-now set the share mode in [options] of `conanfile.txt` as False, rebuild the project, it already works.
+now set the share mode in [options] of `conanfile.txt` as `False` so that we build a **static link** library. \rebuild the project, it already works.
 ```
 [requires]
 xxhash/0.8.1
@@ -182,7 +208,7 @@ then build the project, it can run without issue
 ## 7. Build
 
 ### modify the `conanfile.txt`:
-set the share mode as True:
+set the share mode as `True`, so that we build a **dynamic link** library:
 ```
 [requires]
 xxhash/0.8.1
