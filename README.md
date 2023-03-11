@@ -272,7 +272,7 @@ bin
 app/*.dll
 ```
 
-## 8. Debug
+## 9. Debug
 create `configure_debug.bat`:
 ```bat
 @echo off
