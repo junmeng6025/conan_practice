@@ -97,6 +97,30 @@ graph_info.json
 
 ## 3. create `src` folder
 to hold `main.cpp` and other scripts
+```cpp
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+#include "xxhash.h"
+
+int main()
+{
+    std::string userInput;
+    uint64_t stringHash;
+
+    // Let the user input a string
+    std::cout << "Please input your string: ";
+    std::cin >> userInput;
+
+    // Hash the string
+    stringHash = XXH64(userInput.c_str(), userInput.length(), 0);
+
+    // Output the hash
+    std::cout << "The Hash is: " << std::hex << std::setw(16) << std::setfill('0') << stringHash;
+}
+```
+
 ## 4. create `premake5.lua`
 the file that helps to generate data, syntax like this:
 ```lua
@@ -129,7 +153,7 @@ workspace "StringHasher"
 		defines { "NDEBUG" }
 		optimize "On"
 ```
-## 4. Create premake
+## Create premake
 new folder
 ```bash
 /vendor/premake5
@@ -164,30 +188,8 @@ graph_info.json
 .vs
 ```
 
-## 6. The `main.cpp`
-```cpp
-#include <iostream>
-#include <string>
-#include <iomanip>
+## 6. Build the project
 
-#include "xxhash.h"
-
-int main()
-{
-    std::string userInput;
-    uint64_t stringHash;
-
-    // Let the user input a string
-    std::cout << "Please input your string: ";
-    std::cin >> userInput;
-
-    // Hash the string
-    stringHash = XXH64(userInput.c_str(), userInput.length(), 0);
-
-    // Output the hash
-    std::cout << "The Hash is: " << std::hex << std::setw(16) << std::setfill('0') << stringHash;
-}
-```
 now set the share mode in [options] of `conanfile.txt` as `False` so that we build a **static link** library. \rebuild the project, it already works.
 ```
 [requires]
@@ -199,7 +201,7 @@ xxhash:shared=False
 [generators]
 premake
 ```
-### Summary the commands into `configure.bat`
+## 7. Summary the commands into `configure.bat`
 ... so that we can do the rebuild commands in one line:
 ```bat
 @echo off
@@ -214,7 +216,7 @@ configure.bat
 ```
 then build the project, it can run without issue
 
-## 7. Build
+## 8. Build a dynamic link
 
 ### modify the `conanfile.txt`:
 set the share mode as `True`, so that we build a **dynamic link** library:
