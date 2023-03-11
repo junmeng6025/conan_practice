@@ -1,6 +1,7 @@
 # Get start with Conan
 ![Windows](https://img.shields.io/badge/windows-10-blue)
-![Visual Studio](https://img.shields.io/badge/vs-2022-blue)
+![Visual Studio](https://img.shields.io/badge/visual-studio-2022-blue)  
+
 Followed the YouTube tutorial of [@Lötwig Fusel](https://www.youtube.com/watch?v=T6RZ5On3xz8)  
 github repo: https://github.com/Ohjurot/ConanPremakeTutorial
 ## 0. What does conan do?
